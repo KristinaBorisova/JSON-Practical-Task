@@ -1,7 +1,10 @@
-package com.aubg;
+package com.aubg.CORE;
+
+import com.aubg.UI.PrintMessagesHelper;
 
 public class Manager {
 
+    PrintMessagesHelper msgHelper = new PrintMessagesHelper ();
     //Use a zero-parameter constructor to evoke the
     Manager () {
         startProcess ();
@@ -10,9 +13,10 @@ public class Manager {
     //Create a private void function to make a call to the corresponding functions for completing the process
     private void startProcess() {
 
-        //TODO: Print Welcome msg
-        System.out.println("Program Starts here!");
-        //...
+        // Print Welcome Message
+        msgHelper.printMsg (":::::Mentormate Challenge::::::\n::Monthly Performance Reports::");
+
+
         //TODO(1) Create a function specialized in receiving the path to JSON data file (a command-line argument)
         //Receive a command-line argument that is path to JSON data file (format provided below)
 

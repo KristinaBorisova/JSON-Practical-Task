@@ -1,4 +1,4 @@
-package com.aubg;
+package com.aubg.CORE;
 
 public class Main {
 
