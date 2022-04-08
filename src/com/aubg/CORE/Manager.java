@@ -1,5 +1,6 @@
 package com.aubg.CORE;
 
+import com.aubg.TEXT.Text_ManagerImplementation;
 import com.aubg.UI.ConsoleMessages;
 import com.aubg.UI.UI_ManagerImplementation;
 
@@ -7,9 +8,10 @@ public class Manager {
 
     ConsoleMessages msgHelper = new ConsoleMessages ();
     private final UI_ManagerImplementation uiManager = new UI_ManagerImplementation ();
+    private final Text_ManagerImplementation txtManager = new Text_ManagerImplementation ();
 
     //Use a zero-parameter constructor to evoke the
-    Manager() {
+    public Manager() {
         startProcess ();
     }
 

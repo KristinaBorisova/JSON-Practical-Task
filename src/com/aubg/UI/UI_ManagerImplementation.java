@@ -1,5 +1,10 @@
 package com.aubg.UI;
 
+import com.sun.source.tree.Tree;
+
+import java.nio.file.InvalidPathException;
+import java.nio.file.Paths;
+import java.util.IllegalFormatException;
 import java.util.Scanner;
 
 public class UI_ManagerImplementation implements UI_Manager {
@@ -21,15 +26,29 @@ public class UI_ManagerImplementation implements UI_Manager {
     public String getJSON_DataFile_Path() {
         //Display instructions to the user about the required input:
         msgManager.askUserForPath ();
-
         //Create a variable to hold file location
-        String fileLocation = dataFileInput.next ();
+        //Assign a new value to the string variable - user input
+        String fileLocation = dataFileInput.nextLine ();
 
-        //TODO Check if the input value is the right format -> try-catch?
+        while (!validateStringFileName (fileLocation)) {
+            try {
+                msgManager.printMsg ("Incorrect Data. Please try again!");
+                msgManager.askUserForPath ();
+                fileLocation = dataFileInput.next ();
+            } catch (IllegalFormatException ex) {
+                msgManager.printMsg ("Invalid format for '%s' with parameters '%s'. java.util.Formatter Error: %s");
+            }
+        }
 
         return fileLocation;
     }
 
+
+    //build it method to validate file name
+    public static boolean validateStringFileName(String filename) {
+        Paths.get (filename);
+        return true;
+    }
 
     @Override
     public String getJSON_ReportFile_Path() {

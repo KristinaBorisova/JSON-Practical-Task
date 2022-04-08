@@ -12,7 +12,6 @@ public class ConsoleMessages {
         System.out.println (":::::Mentormate Challenge::::::\n::Monthly Performance Reports::");
     }
 
-
     public void askUserForPath() {
         System.out.print ("Please specify the path to the JSON Data File:");
     }
