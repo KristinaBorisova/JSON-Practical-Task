@@ -30,7 +30,8 @@ public class UI_ManagerImplementation implements UI_Manager {
         //Assign a new value to the string variable - user input
         String fileLocation = dataFileInput.nextLine ();
 
-        while (!validateStringFileName (fileLocation)) {
+        while (validateStringFileName (fileLocation)) {
+
             try {
                 msgManager.printMsg ("Incorrect Data. Please try again!");
                 msgManager.askUserForPath ();
