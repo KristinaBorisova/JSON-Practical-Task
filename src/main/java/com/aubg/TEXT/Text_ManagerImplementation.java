@@ -35,7 +35,7 @@ public class Text_ManagerImplementation implements Text_Manager {
 
         //Call CSV Generator function
         // TODO - Complete Method
-        generateCSVFile (JSONfileContent, JSONreportFileContent);
+        generateCSVReportFile (JSONfileContent, JSONreportFileContent);
     }
 
     //A Method to read JSON file content and copy it to a dynamic data structure
@@ -74,11 +74,26 @@ public class Text_ManagerImplementation implements Text_Manager {
 
 
     //A Method to generate CSV file based on the scraped data from the two JSON files
-    private void generateCSVFile(List<String> fileContent1, List<String> filecontent2) {
+    private void generateCSVReportFile(List<String> fileContent1, List<String> filecontent2) throws FileNotFoundException {
 
-        //TODO Generate CSV File
+        //Create the required CSV file with format: Name, Score
+        createCSVfile ();
+
+        //TODO New Method for Score calculation
+        //Score Calculation -  If useExprienceMultiplier is set to true: Score = totalSales/salesPeriod*experienceMultiplier
+        //If useExprienceMultiplier is set to false: Score = totalSales/salesPeriod
+
+        //Condition(1): Add only employees that have sales period <= periodLimit property
+
+        //Condition(2) Score is within the top X percent of the results, where X is defined by the top performersTreshold property of the report definition
+        
+    }
+
+
+    //Generate CSV file with columns: Name, Score
+    private void createCSVfile() throws FileNotFoundException {
+
         try (PrintWriter writer = new PrintWriter ("report.csv")) {
-
             StringBuilder sb = new StringBuilder ();
             //Columns required: Name, Score
             sb.append ("Name");
@@ -89,19 +104,6 @@ public class Text_ManagerImplementation implements Text_Manager {
             writer.write (sb.toString ());
             System.out.println ("CSV report file created!");
 
-
-            //TODO New Method for Score calculation
-            //Score Calculation -  If useExprienceMultiplier is set to true: Score = totalSales/salesPeriod*experienceMultiplier
-            //If useExprienceMultiplier is set to false: Score = totalSales/salesPeriod
-
-            //Condition(1): Add only employees that have sales period <= periodLimit property
-
-            //Condition(2) Score is within the top X percent of the results, where X is defined by the top performersTreshold property of the report definition
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace ();
         }
     }
-
 }
